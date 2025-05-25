@@ -9,7 +9,7 @@
 set -e
 
 DEVICE=a03s
-VENDOR=samsung
+VENDOR=Mediatek
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"

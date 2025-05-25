@@ -1,3 +1,15 @@
+on early-boot
+    insmod /vendor/lib/bt_drv_connac1x.ko
+    insmod /vendor/lib/connfem.ko
+    insmod /vendor/lib/fmradio_drv_mt6631.ko
+    insmod /vendor/lib/fpsgo.ko
+    insmod /vendor/lib/gps_drv.ko
+    insmod /vendor/lib/met.ko
+    insmod /vendor/lib/trace_mmstat.ko
+    insmod /vendor/lib/wlan_drv_gen4m.ko
+    insmod /vendor/lib/wmt_chrdev_wifi.ko
+    insmod /vendor/lib/wmt_drv.ko
+
 on init
     setprop sys.usb.configfs 1
     setprop sys.usb.ffs.aio_compat 1
@@ -14,8 +26,13 @@ on post-fs
     symlink /dev/block/sdb /dev/block/mmcblk0boot1
     symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
     symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
-
     exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
+
+on fs
+    export ANDROID_ROOT /system_root
+
+on init
+    write /proc/sys/kernel/hung_task_timeout_secs 0
 
 on boot
      start health-hal-2-1
