@@ -137,33 +137,16 @@ BOARD_AVB_ROLLBACK_INDEX := 0
 BOARD_AVB_ALGORITHM := SHA512_RSA4096
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 BOARD_AVB_KEY_PATH := /external/avb/test/data/rsa_key_4096bits.pem
-BOARD_AVB_ODM_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_ODM_DLKM_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_PRODUCT_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_SYSTEM_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_VENDOR_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_VENDOR_DLKM_HASHTREE_ENABLE := true
-
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
 BOARD_AVB_BOOT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.boot.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.boot.os_version:12 --prop com.android.build.boot.security_patch:2019-06-06 --rollback_index 0
-BOARD_AVB_ODM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.odm.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.odm.os_version:12
-BOARD_AVB_ODM_DLKM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.odm_dlkm.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.odm_dlkm.os_version:12
-BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS := = --hash_algorithm sha256 --prop com.android.build.product.os_version:13 --prop com.android.build.product.fingerprint:samsung/a03snnxx/a03s:13/TP1A.220624.014/A037FXXS7CXK1:user/release-keys --prop com.android.build.product.security_patch:2024-11-01
-
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 BOARD_AVB_RECOVERY_ADD_HASH_FOOTER_ARGS := --prop com.android.build.recovery.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --rollback_index 0
-BOARD_AVB_SYSTEM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.system.os_version:13 --prop com.android.build.system.fingerprint:samsung/a03snnxx/a03s:13/TP1A.220624.014/A037FXXS7CXK1:user/release-keys --prop com.android.build.system.security_patch:2024-11-01
-BOARD_AVB_SYSTEM_EXT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.system_ext.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.system_ext.os_version:12 --prop com.android.build.system_ext.security_patch:2024-11-01
-BOARD_AVB_VENDOR_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.vendor.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.vendor.os_version:12 --prop com.android.build.vendor.security_patch:2024-11-01
-BOARD_AVB_VENDOR_BOOT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.vendor_boot.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys
-BOARD_AVB_VENDOR_DLKM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.vendor_dlkm.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.vendor_dlkm.os_version:12
 
 # Crypto
 PLATFORM_VERSION := 12
