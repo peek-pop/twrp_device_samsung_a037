@@ -19,7 +19,7 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
+TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a53
 TARGET_CPU_SMP := true
 
@@ -27,7 +27,7 @@ TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
+TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 TARGET_USES_64_BIT_BINDER := true
 
@@ -60,8 +60,7 @@ TARGET_KERNEL_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 loop.max_part=7 androidboot.selinux=permissive buildtime_bootconfig=enable
-BOARD_BOOTCONFIG := androidboot.boot_devices=bootdevice,soc/11230000.mmc,11230000.mmc
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 loop.max_part=7 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x11a88000
 BOARD_KERNEL_TAGS_OFFSET := 0x07808000
@@ -113,17 +112,12 @@ TARGET_COPY_OUT_USERDATA := userdata
 TARGET_COPY_OUT_SYSTEM := system
 TARGET_COPY_OUT_VENDOR := vendor
 
-# System as root
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
-
 # Properties
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TARGET_RECOVERY_INITRC := $(DEVICE_PATH)/recovery/root/init.recovery.mt6765.rc
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml
 
 # Recovery
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TARGET_OUT_SHARED_LIBRARIES := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -137,13 +131,6 @@ BOARD_AVB_ENABLE := true
 BOARD_AVB_ROLLBACK_INDEX := 0
 BOARD_AVB_ALGORITHM := SHA512_RSA4096
 BOARD_AVB_KEY_PATH := /external/avb/test/data/rsa_key_4096bits.pem
-BOARD_AVB_ODM_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_ODM_DLKM_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_PRODUCT_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_SYSTEM_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_VENDOR_ADD_HASHTREE_ENABLE := true
-BOARD_AVB_VENDOR_DLKM_HASHTREE_ENABLE := true
 
 # Android Verified Boot
 BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
@@ -151,9 +138,6 @@ BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
 BOARD_AVB_BOOT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.boot.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.boot.os_version:12 --prop com.android.build.boot.security_patch:2019-06-06 --rollback_index 0
-BOARD_AVB_ODM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.odm.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.odm.os_version:12
-BOARD_AVB_ODM_DLKM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.odm_dlkm.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.odm_dlkm.os_version:12
-BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS := = --hash_algorithm sha256 --prop com.android.build.product.os_version:13 --prop com.android.build.product.fingerprint:samsung/a03snnxx/a03s:13/TP1A.220624.014/A037FXXS7CXK1:user/release-keys --prop com.android.build.product.security_patch:2024-11-01
 
 # Android Verified Recovery
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
@@ -168,27 +152,6 @@ BOARD_AVB_VBMETA_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_ARGS := --padding_size 4096 --rollback_index 0
 BOARD_AVB_VBMETA_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
-
-# Android Verified System
-BOARD_AVB_SYSTEM := system product
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
-BOARD_AVB_SYSTEM_ALGORITHM := SHA256_RSA2048
-BOARD_AVB_VBMETA_SYSTEM_ARGS := --padding_size 4096
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_SYSTEM_ROLLBACK_INDEX_LOCATION := 
-BOARD_AVB_SYSTEM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.system.os_version:13 --prop com.android.build.system.fingerprint:samsung/a03snnxx/a03s:13/TP1A.220624.014/A037FXXS7CXK1:user/release-keys --prop com.android.build.system.security_patch:2024-11-01
-BOARD_AVB_SYSTEM_EXT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.system_ext.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.system_ext.os_version:12 --prop com.android.build.system_ext.security_patch:2024-11-01
-
-# Android Verified Vendor
-BOARD_AVB_VBMETA_VENDOR := odm vendor
-BOARD_AVB_VBMETA_VENDOR_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
-BOARD_AVB_VBMETA_VENDOR_ALGORITHM := SHA256_RSA2048
-BOARD_AVB_VENDOR_ARGS := --padding_size 4096
-BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_VENDOR_ROLLBACK_INDEX_LOCATION := 4
-BOARD_AVB_VENDOR_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.vendor.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.vendor.os_version:12 --prop com.android.build.vendor.security_patch:2024-11-01
-BOARD_AVB_VENDOR_BOOT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.vendor_boot.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys
-BOARD_AVB_VENDOR_DLKM_ADD_HASH_FOOTER_ARGS := --hash_algorithm sha256 --prop com.android.build.vendor_dlkm.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.vendor_dlkm.os_version:12
 
 # Crypto
 PLATFORM_VERSION := 12
@@ -223,8 +186,6 @@ TARGET_USES_MKE2FS := true
 TW_NO_BIND_SYSTEM := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INCLUDE_FUSE_EXFAT := true
-TW_LOAD_VENDOR_BOOT_MODULES := true
-TW_LOAD_VENDOR_MODULES := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file"
@@ -240,13 +201,8 @@ TARGET_USES_LOGD := true
 TWRP_EVENT_LOGGING := true
 
 # Tools
-TW_INCLUDE_REPACKTOOLS  := true
-TW_INCLUDE_LIBRESETPROP := true
-TW_INCLUDE_RESETPROP    := true
 TW_INCLUDE_PYTHON := true
 TW_INCLUDE_LPDUMP := true
 TW_INCLUDE_LPTOOLS := true
 TW_EXCLUDE_APEX := true
-TW_INCLUDE_NANO := true
-TW_INCLUDE_BASH := true
 TW_DEVICE_VERSION := Galaxy A03s
