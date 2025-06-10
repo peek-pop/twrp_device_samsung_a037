@@ -137,14 +137,13 @@ BOARD_AVB_BOOT_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_BOOT_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_BOOT_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
-BOARD_AVB_BOOT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.boot.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --prop com.android.build.boot.os_version:12 --prop com.android.build.boot.security_patch:2019-06-06 --rollback_index 0
-
+BOARD_AVB_BOOT_ADD_HASH_FOOTER_ARGS := --prop com.android.build.boot.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS8CYE1:user/release-keys --prop com.android.build.boot.os_version:12 --prop com.android.build.boot.security_patch:2019-06-06 --rollback_index 0
 # Android Verified Recovery
 BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
-BOARD_AVB_RECOVERY_ADD_HASH_FOOTER_ARGS := --prop com.android.build.recovery.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS7CXK1:user/release-keys --rollback_index 0
+BOARD_AVB_RECOVERY_ADD_HASH_FOOTER_ARGS := --prop com.android.build.recovery.fingerprint:samsung/a03snnxx/a03s:12/SP1A.210812.016/A037FXXS8CYE1:user/release-keys --rollback_index 0
 
 # Android Verified Vbmeta
 BOARD_AVB_BUILDING_VBMETA_IMAGE  := true
