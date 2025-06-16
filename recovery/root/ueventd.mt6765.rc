@@ -81,3 +81,5 @@ subsystem dma_heap
 /sys/devices/system/cpu/cpu*   cpufreq/scaling_min_freq   0664  system system
 /sys/devices/virtual/misc/uhid/*/leds/* brightness   0664  system system
 /sys/devices/virtual/misc/uhid/*/leds/* multi_intensity   0664  system system
+/sys/devices/platform/11010000.spi/spi_master/spi1/spi1.2/charger-det*    buffer/enable       0660    system    system
+/sys/devices/platform/11010000.spi/spi_master/spi1/spi1.2/charger-det*    buffer/length       0660    system    system
